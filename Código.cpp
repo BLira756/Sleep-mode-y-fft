@@ -113,6 +113,7 @@ void setup() {
 }
 
 void loop() {
+  //Activacion de sleepmode desde el monitor serial
   if (Serial.available() > 0) {
     String command = Serial.readStringUntil('\n');
 
