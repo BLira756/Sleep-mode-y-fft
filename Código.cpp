@@ -1,3 +1,4 @@
+//Librerias necesarias
 #include <MCUFRIEND_kbv.h>
 #include <avr/sleep.h>
 #include <avr/power.h>
@@ -16,9 +17,8 @@ bool sleepMode = false;
 float frequency = 0;
 float lastFrequency = -1;  // Almacena la última frecuencia mostrada
 
-
-void wakeUp() {
   // Este código se ejecuta al despertar
+void wakeUp() {
   // Desactivar la interrupción para evitar que despierte repetidamente
   detachInterrupt(digitalPinToInterrupt(WAKE_PIN));
 
@@ -98,9 +98,6 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-    // Configurar pin del botón como entrada
-  // pinMode(WAKE_PIN, INPUT_PULLUP);  // Usar resistencia de pull-up interna
-
   tft.begin(tft.readID());
   tft.setRotation(1);
   tft.fillScreen(TFT_BLACK);
@@ -127,13 +124,6 @@ void loop() {
       sleepMode = false;
       Serial.println("Despertando el sistema...");
       wakeUp();
-
-    // Si se presiona el botón, entrar en modo de suspensión profunda
-    // if (digitalRead(WAKE_PIN) == LOW) {
-    //   sleepMode = true;
-    //   enterDeepSleep();
-    // }
-    
       }
   }
 
